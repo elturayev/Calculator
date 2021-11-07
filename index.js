@@ -18,6 +18,7 @@ let removeC = document.querySelector('.remove-elementC')
 let removeR = document.querySelector('.remove-elementR')
 let input = document.querySelector('h2')
 let son = 0
+let value = 0
 let num2 = ''
 let sum1 = 0
 
@@ -159,7 +160,10 @@ add.addEventListener('click', (event) => {
 		son = 0
 		if (input.textContent.slice(-1) =='+'||input.textContent.slice(-1) =='*'||input.textContent.slice(-1) =='/'||input.textContent.slice(-1) =='-' )
 			input.textContent = input.textContent.slice(0, -1)
-		else if('+-*/'.includes(input.textContent[0])) son = 0
+		else if('+-*/'.includes(input.textContent[0]) && value == 0) {
+			value += 1
+			son = 0
+		}
 		else son = 1
 	}
 	if (son == 0){
@@ -177,7 +181,10 @@ sub.addEventListener('click', (event) => {
 		son = 0
 		if (input.textContent.slice(-1) =='+'||input.textContent.slice(-1) =='*'||input.textContent.slice(-1) =='/'||input.textContent.slice(-1) =='-' )
 			input.textContent = input.textContent.slice(0, -1)
-		else if(('+-*/'.includes(input.textContent[0]))) son = 0
+		else if(('+-*/'.includes(input.textContent[0])) && value == 0) {
+			son = 0
+			value += 1
+		}
 		else son = 1
 	}
 	if (son == 0 ){
@@ -195,7 +202,10 @@ divic.addEventListener('click', (event) => {
 		son = 0
 		if (input.textContent.slice(-1) =='+'||input.textContent.slice(-1) =='*'||input.textContent.slice(-1) =='/'||input.textContent.slice(-1) =='-' )
 			input.textContent = input.textContent.slice(0, -1)
-		else if(('+-*/').includes(input.textContent[0])) son = 0
+		else if(('+-*/').includes(input.textContent[0]) && value == 0){
+			value += 1
+			son = 0
+		}
 		else son = 1
 	}
 	if (son == 0){
@@ -213,7 +223,10 @@ mult.addEventListener('click', (event) => {
 		son = 0
 		if (input.textContent.slice(-1) =='+'||input.textContent.slice(-1) =='*'||input.textContent.slice(-1) =='/'||input.textContent.slice(-1) =='-' )
 			input.textContent = input.textContent.slice(0, -1)
-		else if (('+-*/').includes(input.textContent[0])) son = 0
+		else if (('+-*/').includes(input.textContent[0]) && value == 0) {
+			value += 1
+			son = 0
+		}
 		else son = 1
 	}
 	if (son == 0){
@@ -274,6 +287,7 @@ removeC.addEventListener('click',(event) => {
 	input.textContent = ''
 	num2 = ''
 	sum1 = ''
+	value = 0
 	doted = 0
 	son = 0
 })
@@ -282,10 +296,6 @@ removeR.addEventListener('click',(event)=>{
 	if (num2.length > 1) num2 = num2.slice(0,-1)
 	if ((input.textContent) == '') num2 = ''
 	son = 0
+	doted = 0
+	value = 0
 })
-
-	
-
-
-
-
