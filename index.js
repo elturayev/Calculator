@@ -128,7 +128,10 @@ number8.addEventListener('click', (event) => {
 		input.textContent = ''
 		input.textContent += '8'	
 			}
-			else if ((input.textContent).length < 15) input.textContent += '8'
+			else if ((input.textContent).length < 15) {
+				input.textContent += '8'
+				console.log(input.textContent)
+			}
 			num2 +='8'
 		})
 number9.addEventListener('click', (event) => {
@@ -145,7 +148,7 @@ number9.addEventListener('click', (event) => {
 })
 
 number0.addEventListener('click', (event) => {
-	if (input.textContent.slice(0,2) != '0'&& num2[1] != '0'){
+	if (input.textContent.slice(0,2) != '0'){
 		input.textContent += '0'
 		num2 +='0'
 	}
@@ -224,12 +227,38 @@ mult.addEventListener('click', (event) => {
 
 let doted = 0
 equal.addEventListener('click', (event) => {
-	if (num2[0] == '+' && num2.length > 1) input.textContent = (parseFloat(sum1) + parseFloat(num2.slice(1)))
-	else if (num2[0] == '-' && num2[1] != '') input.textContent = (((parseFloat(sum1)*10) - (parseFloat(num2.slice(1))*10)) /10).toString().slice(0,10)
-	else if (num2[0] == '*' && num2[1] != '') input.textContent = ((parseFloat(sum1)*10) * (parseFloat(num2.slice(1))*10)) /100
-	else if (num2[0] == '/' && num2[1] != '') input.textContent = ((parseFloat(sum1) / parseFloat(num2.slice(1))).toString()).slice(0,10)
-	sum1 = ''
-	num2 = input.textContent
+	if (num2[0] == '+'){
+		if (isNaN(parseFloat(sum1) + parseFloat(num2.slice(1)))) input.textContent = sum1 + num2
+	 	else {
+	 		input.textContent = (parseFloat(sum1) + parseFloat((num2).slice(1)))
+	 		sum1 = ''
+			num2 = input.textContent
+	 	}
+	}
+	else if (num2[0] == '-'){
+	 	if (isNaN(parseFloat(sum1) - parseFloat(num2.slice(1)))) input.textContent = sum1 + num2
+	 	else{
+	 		input.textContent = (((parseFloat(sum1)*10) - (parseFloat(num2.slice(1))*10)) /10).toString().slice(0,10)
+	 		sum1 = ''
+	 		num2 = input.textContent
+	 	}
+	}
+	else if (num2[0] == '*'){
+	 	if (isNaN(parseFloat(sum1) * parseFloat(num2.slice(1)))) input.textContent = sum1 + num2
+	 	else{
+	 		input.textContent = ((parseFloat(sum1)*10) * (parseFloat(num2.slice(1))*10)) /100
+	 		sum1 = ''
+	 		num2 = input.textContent
+	 	}
+	}
+	else if (num2[0] == '/'){
+	 	if (isNaN(parseFloat(sum1) / parseFloat(num2.slice(1)))) input.textContent = sum1 + num2
+	 	else{
+	 		input.textContent = ((parseFloat(sum1) / parseFloat(num2.slice(1))).toString()).slice(0,10)
+	 		sum1 = ''
+	 		num2 = input.textContent
+	 	}
+	}
 	son = 0
 })
 
