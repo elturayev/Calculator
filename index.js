@@ -149,7 +149,7 @@ number9.addEventListener('click', (event) => {
 })
 
 number0.addEventListener('click', (event) => {
-	if (input.textContent.slice(0,2) != '0'){
+	if (input.textContent.slice(0,2) != '0' && (input.textContent).length < 15){
 		input.textContent += '0'
 		num2 +='0'
 	}
@@ -166,7 +166,7 @@ add.addEventListener('click', (event) => {
 		}
 		else son = 1
 	}
-	if (son == 0){
+	if (son == 0 && input.textContent != ''){
 		if (num2 != '-'&& num2 != '+' && num2 != '*' && num2 != '/')
 			sum1 = num2
 		if ((input.textContent).length <15) input.textContent += '+'
@@ -187,7 +187,7 @@ sub.addEventListener('click', (event) => {
 		}
 		else son = 1
 	}
-	if (son == 0 ){
+	if (son == 0  && input.textContent != ''){
 		if (num2 != '-' && num2 != '+' && num2 != '*' && num2 != '/')
 			sum1 = num2
 		if(input.textContent.length <15) input.textContent += '-'
@@ -208,7 +208,7 @@ divic.addEventListener('click', (event) => {
 		}
 		else son = 1
 	}
-	if (son == 0){
+	if (son == 0 && input.textContent != ''){
 		if (num2 != '-'&& num2 != '+' && num2 != '*' && num2 != '/')
 			sum1 = num2
 		if (input.textContent.length <15) input.textContent += '/'
@@ -229,7 +229,7 @@ mult.addEventListener('click', (event) => {
 		}
 		else son = 1
 	}
-	if (son == 0){
+	if (son == 0 && input.textContent != ''){
 		if (num2 != '-'&& num2 != '+' && num2 != '*' && num2 != '/') sum1 = num2
 		if(input.textContent.length <15) input.textContent += '*'
 	    son  = 1
@@ -276,7 +276,7 @@ equal.addEventListener('click', (event) => {
 })
 
 dot.addEventListener('click',(event) => {
-	if ((!(input.textContent.includes('.')) || !num2.includes('.')) && doted ==0 && input.textContent != ''){
+	if ((!(input.textContent.includes('.')) || !num2.includes('.')) && doted ==0 && input.textContent != '' && (input.textContent).length < 15){
 		num2 += '.'
 		if (num2[1] == '.' && ('+-*/').includes(num2[0])) input.textContent += '0.'
 		else input.textContent += '.'
